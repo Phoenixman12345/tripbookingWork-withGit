@@ -1,0 +1,41 @@
+// To parse this JSON data, do
+//
+//     final customerIdGetResponse = customerIdGetResponseFromJson(jsonString);
+
+import 'dart:convert';
+
+CustomerIdGetResponse customerIdGetResponseFromJson(String str) => CustomerIdGetResponse.fromJson(json.decode(str));
+
+String customerIdGetResponseToJson(CustomerIdGetResponse data) => json.encode(data.toJson());
+
+class CustomerIdGetResponse {
+    int idx;
+    String fullname;
+    String phone;
+    String email;
+    String image;
+
+    CustomerIdGetResponse({
+        required this.idx,
+        required this.fullname,
+        required this.phone,
+        required this.email,
+        required this.image,
+    });
+
+    factory CustomerIdGetResponse.fromJson(Map<String, dynamic> json) => CustomerIdGetResponse(
+        idx: json["idx"],
+        fullname: json["fullname"],
+        phone: json["phone"],
+        email: json["email"],
+        image: json["image"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "idx": idx,
+        "fullname": fullname,
+        "phone": phone,
+        "email": email,
+        "image": image,
+    };
+}
